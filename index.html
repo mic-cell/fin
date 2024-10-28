@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+    <div id="login-container" class="container">
+        <form id="login-form">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p id="login-error" class="error" style="display: none;">Invalid credentials!</p>
+        </form>
+    </div>
+
+    <div id="dashboard-container" class="container" style="display: none;">
+        <h2>Dashboard</h2>
+        <p>Total Pemasukan: <span id="totalIncome">0</span></p>
+        <p>Total Pengeluaran: <span id="totalExpenses">0</span></p>
+
+        <div class="form-container">
+            <h3>Tambah Pemasukan</h3>
+            <form id="income-form">
+                <input type="number" id="income-amount" step="0.01" placeholder="Jumlah" required>
+                <select id="income-description" required>
+                    <option value="Gaji">Gaji</option>
+                    <option value="Kerja sampingan">Kerja sampingan</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+                <button type="submit">Simpan Transaksi</button>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h3>Tambah Pengeluaran</h3>
+            <form id="expense-form">
+                <input type="number" id="expense-amount" step="0.01" placeholder="Jumlah" required>
+                <select id="expense-description" required>
+                    <option value="Makanan">Makanan</option>
+                    <option value="Transportasi">Transportasi</option>
+                    <option value="Pakaian">Pakaian</option>
+                    <option value="Hiburan">Hiburan</option>
+                    <option value="Kesehatan">Kesehatan</option>
+                    <option value="Lainnya">Lainnya</option>
+                </select>
+                <button type="submit">Simpan Transaksi</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
