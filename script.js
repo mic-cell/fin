@@ -34,8 +34,21 @@ document.addEventListener("DOMContentLoaded", function () {
             dataText += `- ${expense.description}: ${expense.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}\n`;
         });
 
-        console.log(dataText);
-        // This is where you would send `dataText` to your server to write to `data.txt`
+        // Send data to the server
+        fetch('writeData.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `data=${encodeURIComponent(dataText)}`
+        })
+        .then(response => response.text())
+        .then(result => {
+            console.log('Data written to file:', result);
+        })
+        .catch(error => {
+            console.error('Error writing data:', error);
+        });
     }
 
     loginForm.addEventListener('submit', function (e) {
@@ -57,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const description = document.getElementById('income-description').value;
         incomes.push({ amount, description });
         updateTotals();
-        formatData(); // Call to format and log data
+        formatData();
         incomeForm.reset();
     });
 
@@ -67,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const description = document.getElementById('expense-description').value;
         expenses.push({ amount, description });
         updateTotals();
-        formatData(); // Call to format and log data
+        formatData();
         expenseForm.reset();
     });
 
